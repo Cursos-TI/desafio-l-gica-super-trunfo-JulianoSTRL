@@ -4,86 +4,40 @@
 int main()
 {
 
-    //Variáveis que serão inseridas pelos usuários;
+    //Variáveis definidas internamente;
 
-    int carta1, carta2, turismo1, turismo2, pop1, pop2; 
-    float area1, area2, pib1, pib2, popdens1, popdens2;
+    int codigo1 = 1, codigo2 = 2;
+    int turismo1 = 15, turismo2 = 25;
+    int pop1 = 763036, pop2 = 1772000;
+
+    float area1 = 450, area2 = 435;
+    float pib1 = 172, pib2 = 98;
+    float popdens1, popdens2;
+
     double pibpc1, pibpc2;
-    char codigo1, codigo2;
-    char estado1[50];
-    char estado2[50];
-    char cidade1[50];
-    char cidade2[50];
+
+    char carta1 = 'A', carta2 = 'B';
+
+    char estado1[50] = "São Paulo";
+    char estado2[50] = "Paraná";
+    char cidade1[50] = "Sorocaba";
+    char cidade2[50] = "Curitiba";
 
     printf ("***Bem Vindo ao Super Trunfo Países***\n");
-    printf ("\nPrimeiramente faremos as configurações das suas cartas e para isso preciso da sua ajuda!\n");
 
-    //Interação usuário - máquina para configuração das cartas
-
-    printf ("\nPor Favor, preencha os dados.\n");
-    printf ("\nLetra entre A e H e número entre 1 e 4:\n");
-    scanf  (" %c%d", &codigo1, &carta1);
-
-    getchar ();
-
-    printf ("O Estado que esta carta irá representar: ");
-    scanf  ("%[^\n]", estado1);
-
-    getchar ();
-
-    printf ("O nome da Cidade representada: ");
-    scanf  ("%[^\n]", cidade1);
-
-    printf ("Número de habitantes dessa cidade: ");
-    scanf  ("%d", &pop1);
-
-    printf ("Agora a área em KM dessa cidade: ");
-    scanf  ("%f", &area1);
-
-    printf ("Me informe o PIB dessa cidade: ");
-    scanf  ("%f", &pib1);
-
-    printf ("Por último, quantos pontos turísticos existem nessa cidade: ");
-    scanf  ("%d", &turismo1);
-    
-
-    //Entrada de dados da segunda carta;
-
-    printf ("\nLetra entre A e H e número entre 1 e 4, sem repetir os dados já usados:\n");
-    scanf  (" %c%d", &codigo2, &carta2);
-
-    getchar ();
-
-    printf ("O Estado que esta carta irá representar: ");
-    scanf  ("%[^\n]", estado2);
-
-    getchar ();
-
-    printf ("O nome da Cidade representada: ");
-    scanf  ("%[^\n]", cidade2);
-
-    printf ("Número de habitantes dessa cidade: ");
-    scanf  ("%d", &pop2);
-
-    printf ("Agora a área em KM dessa cidade: ");
-    scanf  ("%f", &area2);
-
-    printf ("Me informe o PIB dessa cidade: ");
-    scanf  ("%f", &pib2);
-
-    printf ("Por último, quantos pontos turísticos existem nessa cidade: ");
-    scanf  ("%d", &turismo2);
+   // Cálculos
 
     popdens1 = pop1 / area1;
     popdens2 = pop2 / area2;
-    pibpc1   = (pib1 * 1000000000.0) / pop1;
-    pibpc2   = (pib2 * 1000000000.0) / pop2;
 
-    //Resultado Primeira Carta;
+    pibpc1 = (pib1 * 1e9) / pop1;  // PIB per capita em reais
+    pibpc2 = (pib2 * 1e9) / pop2;
 
-    printf ("\n--- Sua primeira carta ficou assim ---\n");
-    printf ("Carta 1:\n");
-    printf ("Código: %c%d.\n",codigo1, carta1);
+    //Dados da Primeira Carta;
+
+    printf ("\n--- Dados da primeira carta ---\n");
+    printf ("\nCarta 1\n");
+    printf ("Código: %c%d.\n",carta1, codigo1);
     printf ("Estado: %s.\n", estado1);
     printf ("Cidade: %s.\n", cidade1);
     printf ("População: %d habitantes.\n", pop1);
@@ -93,12 +47,11 @@ int main()
     printf ("Densidade populacional: %.2f hab/km².\n", popdens1);
     printf ("PIB Per Capita: %.2f mil reais.\n", pibpc1);
 
-    //Resultado Segunda Carta;
-
+    //Dados da Segunda Carta;
     
-    printf ("\n--- Sua segunda carta ficou assim ---\n");
-    printf ("Carta 2:\n");
-    printf ("Código: %c%d.\n",codigo2, carta2);
+    printf ("\n--- Dados da segunda carta ---\n");
+    printf ("\nCarta 2\n");
+    printf ("Código: %c%d.\n",carta2, codigo2);
     printf ("Estado: %s.\n", estado2);
     printf ("Cidade: %s.\n", cidade2);
     printf ("População: %d habitantes.\n", pop2);
@@ -112,101 +65,124 @@ int main()
 
     printf ("\n--- Comparações entre as cartas ---\n");
 
-    int popbtl, areabtl, pibbtl, turismobtl, popdensbtl, pibpcbtl;
     /*
     Cada if - else separa os atributos das cartas
     Compara e apresenta os valores informados 
-    Devolve uma resposta diferente se x > y, ou x < y;
+    Devolve uma resposta diferente se x != y;
     */
 
     //População;
 
     if (pop1 > pop2)
     {
+        printf ("\n- - - População - - -\n");
         printf ("\nPopulação Carta 1: %d habitantes.\n", pop1);
         printf ("População Carta 2: %d habitantes.\n", pop2);
-        printf ("Resultado = Carta 1 venceu!\n");
+        printf ("\nResultado = Carta 1 venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - População - - -\n");
         printf ("\nPopulação Carta 1: %d habitantes.\n", pop1);
         printf ("População Carta 2: %d habitantes.\n", pop2);
-        printf ("Resultado = Carta 2 venceu!\n");
+        printf ("\nResultado = Carta 2 venceu!\n");
+        printf ("- - - - -\n");
     }
 
     //Área;
 
     if (area1 > area2)
     {
+        printf ("\n- - - Área - - -\n");
         printf ("\nÁrea Carta 1: %.2f km².\n", area1);
         printf ("Área Carta 2: %.2f km².\n", area2);
-        printf ("Resultado = Carta 1 venceu!\n");
+        printf ("\nResultado = Carta 1 venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - Área - - -\n");
         printf ("\nÁrea Carta 1: %.2f km².\n", area1);
         printf ("Área Carta 2: %.2f km².\n", area2);
-        printf ("Resultado = Carta 2 venceu!\n");
+        printf ("\nResultado = Carta 2 venceu!\n");
+        printf ("- - - - -\n");
     }
 
     //PIB;
 
     if (pib1 > pib2)
     {
+        printf ("\n- - - PIB - - -\n");
         printf ("\nPIB Carta 1: %.2f bilhões de reais.\n", pib1);
         printf ("PIB Carta 2: %.2f bilhões de reais.\n", pib2);
-        printf ("Resultado = Carta 1 venceu!\n");
+        printf ("\nResultado = Carta 1 venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - PIB - - -\n");
         printf ("\nPIB Carta 1: %.2f bilhões de reais.\n", pib1);
         printf ("PIB Carta 2: %.2f bilhões de reais.\n", pib2);
-        printf ("Resultado = Carta 2 venceu!\n");
+        printf ("\nResultado = Carta 2 venceu!\n");
+        printf ("- - - - -\n");
     }
 
     //Turismo;
 
     if (turismo1 > turismo2)
     {
+        printf ("\n- - - Turismo - - -\n");
         printf ("\nPontos Turisticos Carta 1: %d atrações.\n", turismo1);
         printf ("Pontos Turisticos Carta 2: %d atrações.\n", turismo2);
-        printf ("Resultado = Carta 1 venceu!\n");
+        printf ("\nResultado = Carta 1 venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - Turismo - - -\n");
         printf ("\nPontos Turisticos Carta 1: %d atrações.\n", turismo1);
         printf ("Pontos Turisticos Carta 2: %d atrações.\n", turismo2);
-        printf ("Resultado = Carta 2 venceu!\n");
+        printf ("\nResultado = Carta 2 venceu!\n");
+        printf ("- - - - -\n");
     }
 
     //Densidade Populacional;
 
     if (popdens1 < popdens2)
     {
+        printf ("\n- - - Densidade Populacional - - -\n");
         printf ("\nDensidade Populacional Carta 1: %.2f hab/km².\n", popdens1);
         printf ("Densidade Populacional Carta 2: %.2f hab/km².\n", popdens2);
-        printf ("Resultado: Carta 1 venceu!\n");
+        printf ("\nResultado: Carta 1 venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - Densidade Populacional - - -\n");
         printf ("\nDensidade Populacional Carta 1: %.2f hab/km².\n", popdens1);
         printf ("Densidade Populacional Carta 2: %.2f hab/km².\n", popdens2);
-        printf ("Resultado: Carta 2 venceu!\n");
+        printf ("\nResultado: Carta 2 venceu!\n");
+        printf ("- - - - -\n");
     }
 
     //PIB Per Capita;
 
     if (pibpc1 > pibpc2)
     {
+        printf ("\n- - - PIB Per Capita - - -\n");
         printf ("\nPIB Per Capita Carta 1: %.2f mil reais.\n", pibpc1);
         printf ("PIB Per Capita Carta 2: %.2f mil reais.\n", pibpc2);
-        printf ("Resultado: Carta 1 Venceu!\n");
+        printf ("\nResultado: Carta 1 Venceu!\n");
+        printf ("- - - - -\n");
     }
     else
     {
+        printf ("\n- - - PIB Per Capita - - -\n");
         printf ("\nPIB Per Capita Carta 1: %.2f mil reais.\n", pibpc1);
         printf ("PIB Per Capita Carta 2: %.2f mil reais.\n", pibpc2);
-        printf ("Resultado: Carta 2 Venceu!\n");
+        printf ("\nResultado: Carta 2 Venceu!\n");
+        printf ("- - - - -\n");
     }
     return 0;
 }
